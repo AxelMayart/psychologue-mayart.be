@@ -221,3 +221,9 @@ header,main,footer{position:relative;z-index:1}
 }
 .footer-item img:hover{ transform:translateY(-2px); filter:saturate(1) contrast(1.1) }
 .footer-item p{ font-size:14px; color:#333 }
+
+/* Espace à droite du bouton e-mail */
+.case-actions .btn-mail {
+  padding-right: 1.6rem;   /* ajuste la valeur si besoin */
+  white-space: nowrap;     /* évite le retour à la ligne dans l'adresse */
+}

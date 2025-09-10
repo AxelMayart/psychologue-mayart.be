@@ -227,3 +227,13 @@ header,main,footer{position:relative;z-index:1}
   padding-right: 1.6rem;   /* ajuste la valeur si besoin */
   white-space: nowrap;     /* évite le retour à la ligne dans l'adresse */
 }
+
+/* Un peu plus d'air à l'intérieur de tous les boutons de contact */
+.case-actions .btn {
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;   /* augmente l'espace à droite */
+  white-space: nowrap;
+}
+
+/* Et si tu veux un poil plus d'espace sur le mail uniquement */
+.case-actions .btn-mail { padding-right: 1.6rem; }

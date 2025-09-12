@@ -252,3 +252,60 @@ header,main,footer{position:relative;z-index:1}
     width: 100%;
   }
 }
+
+/* ===== Mobile fix pack (phones) ===== */
+@media (max-width: 600px) {
+  /* Header/menu: no overlap, readable buttons */
+  .header-container{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 92%;
+  }
+  .logo{ line-height: 1.25 }
+  .nav{
+    display:flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .nav a{
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Hero / page titles scale down nicely */
+  .hero{ padding: 40px 16px 8px }
+  .hero h1{ font-size: clamp(28px, 8vw, 36px); }
+  .page-hero{ padding: 16px }
+  .page-hero h1{ font-size: clamp(24px, 7vw, 32px); }
+
+  /* Main grids become single column, centered */
+  .menu-grid{ grid-template-columns: 1fr; width: 92%; }
+  .cases-grid{
+    grid-template-columns: 1fr;     /* 1 colonne sur mobile */
+    width: 92%;
+    margin: 12px auto 28px;
+    justify-items: stretch;
+  }
+
+  /* Cards: tighter paddings, text wraps better */
+  .case{ border-radius: 14px; }
+  .case-header{ padding: 12px 14px }
+  .case-header h2{ font-size: 18px }
+  .case-body{ padding: 12px 14px }
+  .list-check li{ margin: 6px 0; }
+
+  /* Profile block (si utilisé) */
+  .profile-wrap{ width: 92%; padding: 14px }
+
+  /* Footer spacing */
+  .footer{ padding: 22px 10px }
+}
+
+/* Optional: ultra-small devices (≤360px wide) */
+@media (max-width: 360px) {
+  .nav a{ padding: .5rem .75rem; font-size: 15px }
+  .hero h1{ font-size: clamp(24px, 9vw, 32px); }
+}

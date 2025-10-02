@@ -2,8 +2,8 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --ink:#2f3a4a; --panel:#6c7b8b; --bg:#f5f7fa; --line:#cfd9e4; --accent:#7bb9ff;
-  --bg-tiles-opacity:.45;   /* opacité des tuiles du collage */
-  --bg-blur:0px;            /* flou du collage (0 = net) */
+  --bg-tiles-opacity:.45;   /* opacité des tuiles (désormais inutilisée) */
+  --bg-blur:0px;            /* flou du fond (0 = net) */
 }
 html:focus-within{scroll-behavior:smooth}
 body{
@@ -37,32 +37,14 @@ header,main,footer{position:relative;z-index:1}
 /* petit espace entre Accueil et le CTA */
 .nav .menu-link{ margin-right:6px }
 
-/* ===== Collage plein écran (fond) ===== */
+/* ===== Fond plein écran (image unique) ===== */
 .collage{
   position:fixed; inset:0; z-index:0; pointer-events:none;
-  display:grid; gap:0;
-  grid-template-columns:repeat(8,1fr);
-  grid-template-rows:repeat(6,1fr);
-  filter:blur(var(--bg-blur)); transform:translateZ(0);
+  background: url('img/bg-collage.jpg') center/cover no-repeat fixed;
+  filter: blur(var(--bg-blur));
+  transform: translateZ(0);
 }
-.collage .piece{ background-size:cover; background-position:center; opacity:var(--bg-tiles-opacity); }
-
-/* Images du collage */
-.collage .piece:nth-child(9n+1){ background-image:url('img/bg-autisme.jpg'); }
-.collage .piece:nth-child(9n+2){ background-image:url('img/bg-soins.jpg');   }
-.collage .piece:nth-child(9n+3){ background-image:url('img/bg-jeu.jpg');     }
-.collage .piece:nth-child(9n+4){ background-image:url('img/bg-mains.jpg');   }
-.collage .piece:nth-child(9n+5){ background-image:url('img/bg-family.jpg');  }
-.collage .piece:nth-child(9n+6){ background-image:url('img/bg-down.jpg');    }
-.collage .piece:nth-child(9n+7){ background-image:url('img/bg-cubes.jpg');   }
-.collage .piece:nth-child(9n+8){ background-image:url('img/bg-atelier.jpg'); }
-.collage .piece:nth-child(9n+9){ background-image:url('img/bg-family.jpg');  }
-
-/* Variations de cadrage */
-.collage .piece:nth-child(3n){  background-position:40% 50% }
-.collage .piece:nth-child(5n){  background-position:60% 50% }
-.collage .piece:nth-child(7n){  background-position:50% 40% }
-.collage .piece:nth-child(11n){ background-position:50% 60% }
+.collage .piece{ display:none; } /* désactive les anciennes vignettes */
 
 /* Pellicule claire pour la lisibilité globale */
 .collage::after{
@@ -71,7 +53,7 @@ header,main,footer{position:relative;z-index:1}
 }
 
 @media (max-width:900px){
-  .collage{ grid-template-columns:repeat(6,1fr); grid-template-rows:repeat(8,1fr); }
+  .collage{ background-attachment:scroll; }
 }
 
 /* ===== ACCUEIL (Hero + CTA + grille de liens) ===== */

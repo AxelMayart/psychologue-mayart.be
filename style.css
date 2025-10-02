@@ -2,7 +2,6 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --ink:#2f3a4a; --panel:#6c7b8b; --bg:#f5f7fa; --line:#cfd9e4; --accent:#7bb9ff;
-  --bg-tiles-opacity:.45;   /* opacité des tuiles (désormais inutilisée) */
   --bg-blur:0px;            /* flou du fond (0 = net) */
 }
 html:focus-within{scroll-behavior:smooth}
@@ -37,10 +36,10 @@ header,main,footer{position:relative;z-index:1}
 /* petit espace entre Accueil et le CTA */
 .nav .menu-link{ margin-right:6px }
 
-/* ===== Fond plein écran (image unique) ===== */
+/* ===== Fond plein écran (image unique WebP) ===== */
 .collage{
   position:fixed; inset:0; z-index:0; pointer-events:none;
-  background: url('img/bg-collage.jpg') center/cover no-repeat fixed;
+  background: url('img/bg-collage.webp') center/cover no-repeat fixed;
   filter: blur(var(--bg-blur));
   transform: translateZ(0);
 }

@@ -2,7 +2,8 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --ink:#2f3a4a; --panel:#6c7b8b; --bg:#f5f7fa; --line:#cfd9e4; --accent:#7bb9ff;
-  --bg-blur:0px;            /* flou du fond (0 = net) */
+  --bg-tiles-opacity:.45;   /* opacité des tuiles du collage */
+  --bg-blur:0px;            /* flou du collage (0 = net) */
 }
 html:focus-within{scroll-behavior:smooth}
 body{
@@ -36,23 +37,16 @@ header,main,footer{position:relative;z-index:1}
 /* petit espace entre Accueil et le CTA */
 .nav .menu-link{ margin-right:6px }
 
-/* ===== Fond plein écran (image unique WebP) ===== */
+/* ===== Fond unique ===== */
 .collage{
   position:fixed; inset:0; z-index:0; pointer-events:none;
   background: url('img/bg-collage.webp') center/cover no-repeat fixed;
   filter: blur(var(--bg-blur));
   transform: translateZ(0);
 }
-.collage .piece{ display:none; } /* désactive les anciennes vignettes */
-
-/* Pellicule claire pour la lisibilité globale */
 .collage::after{
   content:""; position:absolute; inset:0;
   background:linear-gradient(180deg,rgba(245,247,250,.20),rgba(245,247,250,.32));
-}
-
-@media (max-width:900px){
-  .collage{ background-attachment:scroll; }
 }
 
 /* ===== ACCUEIL (Hero + CTA + grille de liens) ===== */
@@ -184,6 +178,19 @@ header,main,footer{position:relative;z-index:1}
 .case-actions.centered .btn{
   width:100%; max-width:300px; text-align:center;
 }
+.case-actions .btn {
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  white-space: nowrap;
+}
+.case-actions .btn-mail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 1.5rem;   /* espace en plus pour respirer */
+  padding-right: 1.5rem;
+  text-align: center;
+}
 
 /* ===== Vague & Footer ===== */
 .wave-wrap{ margin-top:36px }
@@ -202,40 +209,27 @@ header,main,footer{position:relative;z-index:1}
 }
 .footer-item img:hover{ transform:translateY(-2px); filter:saturate(1) contrast(1.1) }
 .footer-item p{ font-size:14px; color:#333 }
-/* Un peu plus d'air à l'intérieur de tous les boutons de contact */
-.case-actions .btn {
-  padding-left: 1.2rem;
-  padding-right: 1.2rem;   /* augmente l'espace à droite */
-  white-space: nowrap;
-}
 
-/* Et si tu veux un poil plus d'espace sur le mail uniquement */
-.case-actions .btn-mail { padding-right: 1.8rem; }
-
-/* Empêche le chevauchement du menu sur mobile */
+/* ===== Responsive ===== */
 @media (max-width: 500px) {
   .header-container {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px; /* petit espace entre logo et menu */
+    gap: 8px;
   }
-
   .nav {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 6px; /* espace entre les boutons */
+    gap: 6px;
   }
-
   .nav a {
     margin-left: 0;
     text-align: center;
     width: 100%;
   }
 }
-/* ===== Mobile fix pack (phones) ===== */
 @media (max-width: 600px) {
-  /* Header/menu: no overlap, readable buttons */
   .header-container{
     flex-direction: column;
     align-items: stretch;
@@ -254,37 +248,20 @@ header,main,footer{position:relative;z-index:1}
     width: 100%;
     text-align: center;
   }
-
-  /* Hero / page titles scale down nicely */
   .hero{ padding: 40px 16px 8px }
   .hero h1{ font-size: clamp(28px, 8vw, 36px); }
   .page-hero{ padding: 16px }
   .page-hero h1{ font-size: clamp(24px, 7vw, 32px); }
-
-  /* Main grids become single column, centered */
-  .menu-grid{ grid-template-columns: 1fr; width: 92%; }
-  .cases-grid{
-    grid-template-columns: 1fr;     /* 1 colonne sur mobile */
-    width: 92%;
-    margin: 12px auto 28px;
-    justify-items: stretch;
-  }
-
-  /* Cards: tighter paddings, text wraps better */
+  .menu-grid{ grid-template-columns:1fr; width: 92%; }
+  .cases-grid{ grid-template-columns:1fr; width: 92%; margin: 12px auto 28px; justify-items: stretch; }
   .case{ border-radius: 14px; }
   .case-header{ padding: 12px 14px }
   .case-header h2{ font-size: 18px }
   .case-body{ padding: 12px 14px }
   .list-check li{ margin: 6px 0; }
-
-  /* Profile block (si utilisé) */
   .profile-wrap{ width: 92%; padding: 14px }
-
-  /* Footer spacing */
   .footer{ padding: 22px 10px }
 }
-
-/* Optional: ultra-small devices (≤360px wide) */
 @media (max-width: 360px) {
   .nav a{ padding: .5rem .75rem; font-size: 15px }
   .hero h1{ font-size: clamp(24px, 9vw, 32px); }

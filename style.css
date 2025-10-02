@@ -266,3 +266,33 @@ header,main,footer{position:relative;z-index:1}
   .nav a{ padding: .5rem .75rem; font-size: 15px }
   .hero h1{ font-size: clamp(24px, 9vw, 32px); }
 }
+/* ——— HERO lisible pour les sous-pages (sans changer le HTML) ——— */
+.page-hero.case-hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* On transforme titre + sous-titre en "pastilles" lisibles */
+.page-hero.case-hero h1,
+.page-hero.case-hero p:first-of-type {
+  display: inline-block;
+  background: rgba(47,58,74,0.85);
+  color: #fff;
+  padding: 12px 16px;
+  margin: 6px 0;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  backdrop-filter: saturate(1.05) blur(2px);
+}
+
+/* Titre un peu plus gros que le sous-titre */
+.page-hero.case-hero h1 { font-size: 40px; }
+.page-hero.case-hero p:first-of-type { font-size: 18px; color:#e5e7eb; }
+@media (max-width: 900px){
+  .page-hero.case-hero h1 { font-size: clamp(28px, 7vw, 36px); }
+  .page-hero.case-hero p:first-of-type { font-size: 16px; }
+}
